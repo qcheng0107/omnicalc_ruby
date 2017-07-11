@@ -110,17 +110,16 @@ class CalculationsController < ApplicationController
 
     @standard_deviation = @variance ** 0.5
 
-    # m = []
-    # m.push(@numbers.first)
-    # order = 0
+    prelim_mode = 0
+    mode_count = 0
     
-    # while m.length < @numbers.length
-    #   diff = @numbers[order] - @numbers[order+1]
-    #   if diff == 0
-        
-    #   end  
-    #   order = order + 1
-    # end
+    @numbers.each do |numb|
+      if @numbers.count(numb) > mode_count
+        prelim_mode = numb
+        mode_count = @numbers.count(numb)
+      end
+    end
+    @mode = prelim_mode
     
 
 
