@@ -103,7 +103,7 @@ class CalculationsController < ApplicationController
     
     v = []
     @numbers. each do |num|
-      correlated_mean_diff = (num - @mean) ** 2 / (@count - 1)
+      correlated_mean_diff = (num - @mean) ** 2 / @count
       v.push(correlated_mean_diff)
     end
     @variance = v.sum
