@@ -17,8 +17,6 @@ class CalculationsController < ApplicationController
 
     @character_count_without_spaces = @text.gsub(/\s+/, "").length
 
-    @text.gsub(/[^a-z0-9\s]/i, "")
-    @special_word.gsub(/[^a-z0-9\s]/i, "")
     @occurrences = @text.split.count (@special_word)
 
     # ================================================================================
@@ -97,7 +95,11 @@ class CalculationsController < ApplicationController
 
     @range = @numbers.max - @numbers.min
 
-    @median = @sorted_numbers[@count/2]
+    if @count.to_i.even? 
+      @median = (@sorted_numbers[@count/2]+@sorted_numbers[@count/2+1])/2
+      else
+        @median = @sorted_numbers[@count/2]
+    end
 
     @sum = @numbers.sum
 
